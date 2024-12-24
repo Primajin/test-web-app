@@ -6,6 +6,7 @@ import './App.css'
 console.debug('This is a debug message and likely hidden')
 console.info('This is an info')
 console.log('This is a log')
+console.log('This is another log')
 console.warn('This is a warning')
 console.error('This is an error')
 
