@@ -1,0 +1,22 @@
+name: Test Web Application
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-webapp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use WebApp Console Log Action
+        uses: Primajin/webapp-console-log-action@v0.0.1
+        with:
+          webapp-url: 'http://localhost:3000'
+          wait-time: 5000
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
