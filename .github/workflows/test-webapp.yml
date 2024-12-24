@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Use WebApp Console Log Action
-        uses: Primajin/webapp-console-log-action@v0.0.1
+        uses: Primajin/webapp-console-log-action@v0
         with:
           webapp-url: 'http://localhost:3000'
           wait-time: 5000
