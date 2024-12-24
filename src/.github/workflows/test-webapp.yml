@@ -1,18 +1,33 @@
-name: Test Web Application
+name: "Test Web Application"
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
 
 jobs:
-  test-webapp:
+  build:
     runs-on: ubuntu-latest
-
+    name: Make sure it builds. Then show a preview.
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+          cache: 'npm'
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+      - name: Install dependencies
+        run: npm ci
 
       - name: Use WebApp Console Log Action
         uses: Primajin/webapp-console-log-action@v0.0.1
