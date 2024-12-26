@@ -29,10 +29,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build
+        run: npm run build
+
+      - name: Run http-server on port 3000 in the background
+        run: npx http-server ./ -p 3000 &
+
       - name: Use WebApp Console Log Action
-        uses: Primajin/webapp-console-log-action@v0
+        uses: Primajin/webapp-console-log-action@v1
         with:
           webapp-url: 'http://localhost:3000'
-          wait-time: 5000
+          wait-time: 3000
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
