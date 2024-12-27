@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '21'
+          node-version: '22'
           cache: 'npm'
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -36,7 +36,7 @@ jobs:
         run: npx http-server ./ -p 3000 &
 
       - name: Use WebApp Console Log Action
-        uses: Primajin/webapp-console-log-action@v1.0.2
+        uses: Primajin/webapp-console-log-action@v1.0.3
         with:
           webapp-url: 'http://localhost:3000'
           wait-time: 3000
