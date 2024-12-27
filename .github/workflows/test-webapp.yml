@@ -36,7 +36,7 @@ jobs:
         run: npx http-server ./ -p 3000 &
 
       - name: Use WebApp Console Log Action
-        uses: Primajin/webapp-console-log-action@v1.0.1
+        uses: Primajin/webapp-console-log-action@v1.0.2
         with:
           webapp-url: 'http://localhost:3000'
           wait-time: 3000
